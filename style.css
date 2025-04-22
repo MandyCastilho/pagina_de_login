@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+:root {
+    --bg: #ffffff;
+    --text: #333;
+    --primary: #045071;
+    --error: #ff4444;
+    --card-bg: #fff;
+  }
+  
+  body.dark {
+    --bg: #1e1e2f;
+    --text: #f0f0f0;
+    --primary: #fd6084;
+    --card-bg: #2e2e3d;
+  }
+  
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s, color 0.3s;
+    flex-direction: column;
+  }
+  
+  .theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .login-container {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+  }
+  
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .senha-wrapper {
+    position: relative;
+  }
+  
+  #toggleSenha {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    cursor: pointer;
+  }
+  
+  button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    filter: brightness(1.1);
+  }
+  
+  .mensagem-erro {
+    color: var(--error);
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .remember {
+    font-size: 0.85rem;
+    color: var(--text);
+  }
