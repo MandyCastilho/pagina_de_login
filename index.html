@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Uma página de login simples e moderna.">
+    <meta name="keywords" content="login, autenticação, página de login.">
+    <meta name="author" content="Amanda Ramos Castilho">
+
+    <link rel="icon" href="img/login-seguro.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <title>Página de Login</title>
+</head>
+
+<body>
+
+    <div class="theme-toggle">
+      <label>
+        <input type="checkbox" id="toggleTema" />
+        🌙 Alternar Tema
+      </label>
+    </div>
+  
+    <div class="login-container" data-aos="fade-up">
+
+      <h2>Seja bem-vindo(a) 🚀</h2>
+      <form id="loginForm">
+
+        <div class="input-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" required />
+        </div>
+  
+        <div class="input-group">
+          <label for="senha">Senha</label>
+          <div class="senha-wrapper">
+            <input type="password" id="senha" required />
+            <span id="toggleSenha">👁️</span>
+          </div>
+        </div>
+  
+        <div class="input-group remember">
+          <label>
+            <input type="checkbox" id="lembrarEmail" />
+            Lembrar e-mail
+          </label>
+        </div>
+  
+        <button type="submit">Entrar</button>
+        <p class="mensagem-erro" id="mensagemErro"></p>
+      </form>
+
+    </div>
+  
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+
+  </body>
+  </html>
