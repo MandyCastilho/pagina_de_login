@@ -1,110 +1,211 @@
 @charset "UTF-8";
 
 :root {
-    --bg: #ffffff;
-    --text: #333;
-    --primary: #045071;
-    --error: #ff4444;
-    --card-bg: #fff;
-  }
-  
-  body.dark {
-    --bg: #1e1e2f;
-    --text: #f0f0f0;
-    --primary: #fd6084;
-    --card-bg: #2e2e3d;
-  }
-  
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background 0.3s, color 0.3s;
-    flex-direction: column;
-  }
-  
-  .theme-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .login-container {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    width: 90%;
-    max-width: 400px;
-    transition: background 0.3s, color 0.3s;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: var(--primary);
-  }
-  
-  .input-group {
-    margin-bottom: 1rem;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 0.3rem;
-  }
-  
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-    padding: 0.7rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  
-  .senha-wrapper {
-    position: relative;
-  }
-  
-  #toggleSenha {
-    position: absolute;
-    right: 10px;
-    top: 35%;
-    cursor: pointer;
-  }
-  
-  button {
-    width: 100%;
-    padding: 0.8rem;
-    background-color: var(--primary);
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    margin-top: 1rem;
-  }
-  
-  button:hover {
-    filter: brightness(1.1);
-  }
-  
-  .mensagem-erro {
-    color: var(--error);
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-  
-  .remember {
-    font-size: 0.85rem;
-    color: var(--text);
-  }
+  --bg: #f8f9fa;
+  --text: #2c2c2c;
+  --primary: #045071;
+  --error: #e63946;
+  --card-bg: #ffffff;
+  --input-bg: #f1f3f5;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+body.dark {
+  --bg: linear-gradient(to bottom, #1a1a2e, #2a2a40);
+  --text: #eaeaea;
+  --primary: #fd6084;
+  --card-bg: #2f2f45;
+  --input-bg: #3b3b55;
+  --shadow: rgba(0, 0, 0, 0.4);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.4s ease, color 0.4s ease;
+  flex-direction: column;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--text);
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+}
+
+.login-container {
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 30px var(--shadow);
+  width: 90%;
+  max-width: 420px;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  font-size: 1.8rem;
+}
+
+.input-group {
+  margin-bottom: 1.25rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--input-bg);
+  font-size: 1rem;
+  color: var(--text);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: 2px solid var(--primary);
+  background-color: #fff;
+}
+
+.senha-wrapper {
+  position: relative;
+}
+
+#toggleSenha {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.6;
+  color: var(--text);
+  transition: opacity 0.2s;
+}
+
+#toggleSenha:hover {
+  opacity: 1;
+}
+
+button {
+  width: 100%;
+  padding: 0.9rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+button:hover {
+  filter: brightness(1.15);
+}
+
+.mensagem-erro,
+.mensagem {
+  color: var(--error);
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.mensagem.sucesso {
+  color: #43aa8b;
+  font-weight: 600;
+}
+
+.mensagem.erro {
+  color: var(--error);
+  font-weight: 600;
+}
+
+.remember {
+  font-size: 0.85rem;
+  color: var(--text);
+  text-align: right;
+}
+
+/* Barra de força da senha */
+#forcaSenha {
+  width: 100%;
+  height: 6px;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  appearance: none;
+  background-color: #ddd;
+}
+
+#forcaSenha::-webkit-progress-bar {
+  background-color: #ddd;
+  border-radius: 4px;
+}
+
+#forcaSenha::-webkit-progress-value {
+  border-radius: 4px;
+  transition: width 0.4s;
+}
+
+/* Força da senha por cor */
+.forca-1::-webkit-progress-value {
+  background-color: #e63946;
+}
+
+.forca-2::-webkit-progress-value {
+  background-color: #f4a261;
+}
+
+.forca-3::-webkit-progress-value {
+  background-color: #f6c90e;
+}
+
+.forca-4::-webkit-progress-value {
+  background-color: #43aa8b;
+}
+
+/* Animação de erro */
+.erro {
+  outline: 2px solid var(--error);
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+
