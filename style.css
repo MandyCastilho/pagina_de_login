@@ -235,5 +235,83 @@ button:hover {
   100% { transform: translateX(0); }
 }
 
+.theme-toggle {
+  z-index: 10;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+  body {
+    padding-top: 5rem; /* espaço suficiente para o botão no topo */
+    padding: 1.5rem;
+    justify-content: flex-start;
+  }
+
+  .login-container {
+    padding: 2rem;
+    max-width: 90%;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.9rem;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 0.9rem;
+  }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+  .login-container {
+    padding-top: 4rem;
+    padding: 1.5rem;
+    box-shadow: 0 8px 20px var(--shadow);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .theme-toggle {
+    font-size: 1rem;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .email-wrapper,
+  .senha-wrapper {
+    padding: 0.4rem 0.8rem;
+  }
+
+  #toggleSenha {
+    font-size: 1rem;
+    right: 10px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .remember {
+    font-size: 0.75rem;
+  }
+}
+
+
 
 
