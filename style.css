@@ -239,27 +239,19 @@ button:hover {
   z-index: 10;
 }
 
-/* Responsividade para tablets */
-@media (max-width: 768px) {
-  body {
-    padding-top: 5rem; /* espaço suficiente para o botão no topo */
-    padding: 1.5rem;
-    justify-content: flex-start;
+/* Responsividade para tablets (entre 601px e 1024px) */
+@media (max-width: 1024px) {
+  h2 {
+    font-size: 2rem;
   }
 
   .login-container {
     padding: 2rem;
-    max-width: 90%;
-  }
-
-  h2 {
-    font-size: 1.8rem;
   }
 
   input[type="email"],
   input[type="password"] {
     font-size: 0.95rem;
-    padding: 0.7rem 0.9rem;
   }
 
   button {
@@ -268,49 +260,54 @@ button:hover {
   }
 }
 
-/* Responsividade para celulares */
-@media (max-width: 480px) {
+/* Responsividade para celulares (até 600px) */
+@media (max-width: 600px) {
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.8rem;
+  }
+
   .login-container {
-    padding-top: 4rem;
     padding: 1.5rem;
     box-shadow: 0 8px 20px var(--shadow);
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
-  .theme-toggle {
-    font-size: 1rem;
-    top: 1rem;
-    right: 1rem;
+  label {
+    font-size: 0.9rem;
   }
 
   input[type="email"],
-  input[type="password"] {
+  input[type="password"],
+  .email-wrapper input,
+  .senha-wrapper input {
     font-size: 0.9rem;
-    padding: 0.6rem 0.8rem;
-  }
-
-  .email-wrapper,
-  .senha-wrapper {
-    padding: 0.4rem 0.8rem;
-  }
-
-  #toggleSenha {
-    font-size: 1rem;
-    right: 10px;
+    padding: 0.65rem 0.9rem;
   }
 
   button {
     font-size: 0.9rem;
-    padding: 0.8rem;
+    padding: 0.85rem;
   }
 
   .remember {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .mensagem-erro,
+  .mensagem {
+    font-size: 0.85rem;
+  }
+
+  #toggleSenha {
+    font-size: 1rem;
   }
 }
+
 
 
 
