@@ -60,6 +60,14 @@ senhaInput.addEventListener("blur", () => {
   tooltipSenha.style.display = "none";
 });
 
+// Aviso Caps Lock
+senhaInput.addEventListener("keyup", (e) => {
+  const capsLockAtivo = e.getModifierState("CapsLock");
+  tooltipSenha.textContent = capsLockAtivo
+    ? "Caps Lock está ativado!"
+    : "Use letras, números e símbolos para uma senha forte.";
+});
+
 // Destaque visual com erro e animação shake
 function destacarErro(input) {
   input.classList.add("erro", "shake");
@@ -74,12 +82,29 @@ function mostrarMensagem(texto, sucesso = false) {
   setTimeout(() => mensagemErro.textContent = "", 3000);
 }
 
+// Controle de tentativas de login
+let tentativas = 0;
+const maxTentativas = 3;
+
+function bloquearLogin() {
+  form.querySelector("button[type='submit']").disabled = true;
+  mostrarMensagem("Muitas tentativas falhas. Tente novamente mais tarde.");
+  setTimeout(() => {
+    tentativas = 0;
+    form.querySelector("button[type='submit']").disabled = false;
+    mostrarMensagem("Você pode tentar novamente agora.", true);
+  }, 15000);
+}
+
 // Submissão do formulário
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   const email = emailInput.value.trim();
   const senha = senhaInput.value.trim();
+  const btnSubmit = form.querySelector("button[type='submit']");
+  btnSubmit.classList.add("clicado");
+  setTimeout(() => btnSubmit.classList.remove("clicado"), 300);
 
   if (!email || !senha) {
     mostrarMensagem("Preencha todos os campos.");
@@ -100,8 +125,16 @@ form.addEventListener("submit", function (e) {
     return;
   }
 
+  if (tentativas >= maxTentativas) {
+    bloquearLogin();
+    return;
+  }
+
   if (email === "admin@exemplo.com" && senha === "123456") {
     mostrarMensagem("Login bem-sucedido!", true);
+
+    const dataLogin = new Date().toLocaleString("pt-BR");
+    localStorage.setItem("ultimoLogin", dataLogin);
 
     if (lembrarEmail.checked) {
       localStorage.setItem("emailSalvo", email);
@@ -116,6 +149,7 @@ form.addEventListener("submit", function (e) {
     mostrarMensagem("E-mail ou senha incorretos.");
     destacarErro(emailInput);
     destacarErro(senhaInput);
+    tentativas++;
   }
 });
 
@@ -123,6 +157,12 @@ form.addEventListener("submit", function (e) {
 document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     form.dispatchEvent(new Event("submit"));
+  }
+
+  // Ctrl+T alterna o tema
+  if (e.ctrlKey && e.key === "t") {
+    toggleTema.checked = !toggleTema.checked;
+    toggleTema.dispatchEvent(new Event("change"));
   }
 });
 
@@ -133,7 +173,7 @@ toggleTema.addEventListener("change", () => {
   localStorage.setItem("tema", document.body.classList.contains("dark") ? "escuro" : "claro");
 });
 
-// Verifica tema e e-mail salvos
+// Verifica tema, e-mail e último login salvos
 window.addEventListener("DOMContentLoaded", () => {
   const temaSalvo = localStorage.getItem("tema");
   if (temaSalvo === "escuro") {
@@ -146,6 +186,11 @@ window.addEventListener("DOMContentLoaded", () => {
   if (emailSalvo) {
     emailInput.value = emailSalvo;
     lembrarEmail.checked = true;
+  }
+
+  const ultimoLogin = localStorage.getItem("ultimoLogin");
+  if (ultimoLogin) {
+    mostrarMensagem(`Último login: ${ultimoLogin}`, true);
   }
 });
 
